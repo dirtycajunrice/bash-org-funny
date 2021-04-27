@@ -78,6 +78,7 @@ func insultGrab(w http.ResponseWriter, r *http.Request) {
 func redirectRoot(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/insult", http.StatusTemporaryRedirect)
 }
+
 func main() {
 	rand.Seed(time.Now().Unix())
 	http.HandleFunc("/", redirectRoot)
