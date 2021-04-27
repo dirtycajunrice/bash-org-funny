@@ -10,6 +10,8 @@ RUN go build .
 
 FROM scratch
 
-COPY --from=builder /app/bash-org-funny /
+WORKDIR /app
+
+COPY --from=builder /app/bash-org-funny /app
 
 ENTRYPOINT ["/bash-org-funny"]
