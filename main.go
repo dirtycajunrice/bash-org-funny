@@ -26,6 +26,7 @@ func quoteGrab(w http.ResponseWriter, r *http.Request) {
 	page := html.UnescapeString(string(b))
 	if strings.Contains(page, "Sorry, the MySQL daemon appears to be down.1Error: problem getting page...") {
 		http.Error(w, "We keep breaking bash.org's mysql... eek.", http.StatusGatewayTimeout)
+		return
 	}
 	re := regexp.MustCompile(`.*<p class="qt">(.*)</p>.*`)
 	sma := re.FindAllStringSubmatch(page, -1)
