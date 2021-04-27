@@ -6,12 +6,10 @@ WORKDIR /app
 
 COPY . .
 
-RUN go build .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
 
 FROM scratch
 
-WORKDIR /app
+COPY --from=builder /app/main .
 
-COPY --from=builder /app/bash-org-funny /app
-
-ENTRYPOINT ["/app/bash-org-funny"]
+CMD ["/main"]
