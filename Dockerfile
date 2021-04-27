@@ -14,4 +14,4 @@ WORKDIR /app
 
 COPY --from=builder /app/bash-org-funny /app
 
-ENTRYPOINT ["/bash-org-funny"]
+ENTRYPOINT ["/app/bash-org-funny"]
